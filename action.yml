@@ -1,0 +1,13 @@
+name: 'Assert Git Remote Ref'
+description: 'Asserts that HEAD is equal to a remote ref'
+inputs:
+  remote:
+    default: 'origin'
+    description: 'The remote to assert against'
+    required: false
+  ref:
+    description: 'The remote ref to assert against'
+    required: false
+runs:
+  using: 'node12'
+  main: 'index.js'

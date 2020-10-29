@@ -1,0 +1,27 @@
+{
+  "name": "assert-git-remote-ref-action",
+  "version": "0.0.0",
+  "description": "Asserts that HEAD is equal to a remote ref",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JeffAshton/assert-git-remote-action.git"
+  },
+  "keywords": [
+    "GitHub",
+    "Actions",
+    "git"
+  ],
+  "author": "Jeff Ashton",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JeffAshton/assert-git-remote-action/issues"
+  },
+  "homepage": "https://github.com/JeffAshton/assert-git-remote-action#readme",
+  "dependencies": {
+    "@actions/core": "^1.2.6"
+  }
+}
