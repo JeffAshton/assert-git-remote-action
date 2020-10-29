@@ -61,8 +61,6 @@ async function run() {
 		const localRef = 'HEAD';
 		const remoteRef = `refs/remotes/${remote}/${ref}`;
 
-		writeLine();
-
 		await gitFetch( remote, ref );
 		writeLine();
 
