@@ -9,8 +9,5 @@ inputs:
     description: 'The remote ref to assert against'
     required: false
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
-  args:
-    - ${{ inputs.remote }}
-    - ${{ inputs.ref }}
+  using: 'node12'
+  main: 'dist/index.js'
