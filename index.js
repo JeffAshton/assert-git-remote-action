@@ -67,10 +67,10 @@ async function run() {
 		writeLine();
 
 		const localHash = await gitShowRef( localRef );
-		core.info( `${localRef} == ${localHash}` );
+		core.info( `${localHash}` );
 
 		const remoteHash = await gitShowRef( remoteRef );
-		core.info( `${remoteRef} == ${remoteHash}` );
+		core.info( `${remoteHash}` );
 
 		if( localHash === remoteHash ) {
 			core.info( `${localRef} == ${remoteRef}` )
