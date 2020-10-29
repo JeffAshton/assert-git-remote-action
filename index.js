@@ -1,14 +1,10 @@
 const child_process = require( 'child_process' );
 const core = require('@actions/core' );
-const os = require( 'os' );
+const { EOL } = require( 'os' );
 const util = require( 'util' );
 const { write } = require( 'fs' );
 
 const execFile = util.promisify(child_process.execFile);
-
-function writeLine() {
-	process.stdout.write( os.EOL );
-}
 
 async function gitFetch( remote, ref ) {
 
@@ -22,11 +18,11 @@ async function gitFetch( remote, ref ) {
 	] );
 
 	if( stdout ) {
-		process.stdout.write( stdout );
+		process.stdout.write( `${stdout}${EOL}` );
 	}
 
 	if( stderr ) {
-		process.stderr.write( stderr );
+		process.stderr.write( `${stderr}${EOL}` );
 	}
 }
 
@@ -42,7 +38,7 @@ async function gitShowRef( ref ) {
 	] );
 
 	if( stderr ) {
-		process.stderr.write( stderr );
+		process.stderr.write( `${stderr}${EOL}` );
 	}
 
 	const hash = stdout;
@@ -62,7 +58,6 @@ async function run() {
 		const remoteRef = `refs/remotes/${remote}/${ref}`;
 
 		await gitFetch( remote, ref );
-		writeLine();
 
 		const localHash = await gitShowRef( localRef );
 		core.info( `${localHash}` );
@@ -80,11 +75,11 @@ async function run() {
 	} catch( error ) {
 
 		if( error.stdout ) {
-			process.stdout.write( error.stdout );
+			process.stdout.write( `${error.stdout}${EOL}` );
 		}
 
 		if( error.stderr ) {
-			process.stderr.write( error.stderr );
+			process.stderr.write( `${error.stderr}${EOL}` );
 		}
 
 		core.setFailed( error.message );
