@@ -1,0 +1,49 @@
+name: Tests
+on: [push]
+
+jobs:
+  master:
+    runs-on: ubuntu-latest
+    name: Assert origin/master
+    steps:
+
+      - name: Git checkout
+        uses: Brightspace/third-party-actions@actions/checkout
+        with:
+            fetch-depth: 0
+
+      - name: Get checkout origin master
+        run: git checkout master && git pull --ff-only
+
+      - name: Assert Git Remote Ref
+        uses: Brightspace/assert-git-remote-ref-action@master
+        id: assert
+        with:
+          remote: origin
+          ref: master
+
+      - name: Verify same
+        if: steps.assert.outputs.result != 'same'
+        run: echo "${{ steps.assert.outputs.result }}" && exit 1
+
+  out-of-date:
+    runs-on: ubuntu-latest
+    name: Assert origin/out-of-date
+    steps:
+
+      - name: Git checkout
+        uses: Brightspace/third-party-actions@actions/checkout
+        with:
+            fetch-depth: 0
+
+      - name: Assert Git Remote Ref
+        uses: Brightspace/assert-git-remote-ref-action@master
+        id: assert
+        continue-on-error: true
+        with:
+          remote: origin
+          ref: out-of-date
+
+      - name: Verify different
+        if: steps.assert.outputs.result != 'different'
+        run: echo "${{ steps.assert.outputs.result }}" && exit 1

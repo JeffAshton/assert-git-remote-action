@@ -68,9 +68,11 @@ async function run() {
 
 		if( localHash === remoteHash ) {
 			core.info( `${localRef} == ${remoteRef}` )
+			core.setOutput( 'result', 'same' );
 
 		} else {
 			core.setFailed( `${localRef} != ${remoteRef}` )
+			core.setOutput( 'result', 'different' );
 		}
 
 	} catch( error ) {

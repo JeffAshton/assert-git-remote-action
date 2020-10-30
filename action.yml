@@ -8,6 +8,9 @@ inputs:
   ref:
     description: 'The remote ref to assert against'
     required: false
+outputs:
+  result:
+    description: 'The result of the check'
 runs:
   using: 'node12'
   main: 'index.js'

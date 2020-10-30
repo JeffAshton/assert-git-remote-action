@@ -1,6 +1,6 @@
 {
   "name": "assert-git-remote-ref-action",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Asserts that HEAD is equal to a remote ref",
   "main": "index.js",
   "scripts": {
