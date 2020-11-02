@@ -8,7 +8,7 @@ jobs:
     steps:
 
       - name: Git checkout
-        uses: Brightspace/third-party-actions@actions/checkout
+        uses: actions/checkout
         with:
             fetch-depth: 0
 
@@ -16,7 +16,7 @@ jobs:
         run: git checkout master && git pull --ff-only
 
       - name: Assert Git Remote Ref
-        uses: Brightspace/assert-git-remote-ref-action@master
+        uses: ./
         id: assert
         with:
           remote: origin
@@ -32,12 +32,12 @@ jobs:
     steps:
 
       - name: Git checkout
-        uses: Brightspace/third-party-actions@actions/checkout
+        uses: actions/checkout
         with:
             fetch-depth: 0
 
       - name: Assert Git Remote Ref
-        uses: Brightspace/assert-git-remote-ref-action@master
+        uses: ./
         id: assert
         continue-on-error: true
         with:
