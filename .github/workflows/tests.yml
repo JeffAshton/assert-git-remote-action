@@ -8,7 +8,7 @@ jobs:
     steps:
 
       - name: Git checkout
-        uses: actions/checkout
+        uses: '@actions/checkout'
         with:
             fetch-depth: 0
 
@@ -32,7 +32,7 @@ jobs:
     steps:
 
       - name: Git checkout
-        uses: actions/checkout
+        uses: '@actions/checkout'
         with:
             fetch-depth: 0
 
