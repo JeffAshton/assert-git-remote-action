@@ -26,6 +26,18 @@ jobs:
         if: steps.assert.outputs.result != 'same'
         run: echo "${{ steps.assert.outputs.result }}" && exit 1
 
+      - name: Comment
+        uses: actions/github-script
+        with:
+            github-token: ${{secrets.GITHUB_TOKEN}}
+            script: |
+                github.issues.createComment({
+                  issue_number: context.issue.number,
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  body: 'test'
+                })
+
   out-of-date:
     runs-on: ubuntu-latest
     name: Assert origin/out-of-date
